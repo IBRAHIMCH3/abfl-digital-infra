@@ -27,7 +27,7 @@ agent any
 			echo "Folder exists !!"
         fi
         mv main/* ${SERVER_NAME}_Dir
-        mv variables/.terraform.lock.hcl/task-definitions variables/*.tf variables/${SERVER_NAME}.tfvars ${SERVER_NAME}_Dir
+        mv variables/.terraform.lock.hcl variables/*.tf variables/${SERVER_NAME}.tfvars ${SERVER_NAME}_Dir
         ls -lart ${SERVER_NAME}_Dir
         '''
      }
@@ -40,7 +40,7 @@ agent any
 		sh '''
 		cd ${SERVER_NAME}_Dir
 
-		terraform init -input=true -reconfigure -backend-config "key=global/ec2/${SERVER_NAME}.tfstate"
+		terraform init -input=true -reconfigure -backend-config "key=global/main/${SERVER_NAME}.tfstate"
                 /usr/local/bin/terraform workspace new ${TF_WORKSPACEN} || true
 		/usr/local/bin/terraform workspace list
 		'''
