@@ -3,8 +3,8 @@
 aws_region                      = "ap-southeast-1"
 env_name                        = "dr-los"
 vpc_id                          = "vpc-d80dc3be"
-aws_account 			= "605473850426"
-aws_role    			= "jenkins_Cross"
+aws_account 		              	= "605473850426"
+aws_role    		              	= "jenkins_Cross"
 
 
 # SSH Key related variables
@@ -24,7 +24,7 @@ ecs_lb_subnets                  = ["subnet-d32d8e9b", "subnet-5bc6a802"]
 #listener_ssl_policy             = "ELBSecurityPolicy-TLS-1-2-2017-01"
 #listener_certificate_arn        = "arn:aws:acm:ap-southeast-1:605473850426:certificate/7bca7704-b84f-4f0f-b9c9-f4cd6928da09"
 # ECS Cluster
-ecs_cluster_name                =  "DR-LOS-ECS-Cluster"
+ecs_cluster_name                =  "abfl-digital-kuliza-dev"
 
 # Django variables
 django-fqdn                     = "dr-django.abfldirect.com"
