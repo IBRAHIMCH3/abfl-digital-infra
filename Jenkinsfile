@@ -13,6 +13,10 @@ agent any
 //
     stage('Check-Out') {
      steps {
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'main']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
+        sh '''
+        ls -l main
+        '''
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'variables']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
         ls -la variables
@@ -23,7 +27,7 @@ agent any
 			echo "Folder exists !!"
         fi
         mv main/* ${SERVER_NAME}_Dir
-        mv variables/ variables/*.tf variables/${SERVER_NAME}.tfvars ${SERVER_NAME}_Dir
+        mv variables/.terraform.lock.hcl variables/*.tf variables/${SERVER_NAME}.tfvars ${SERVER_NAME}_Dir
         ls -lart ${SERVER_NAME}_Dir
         '''
      }
