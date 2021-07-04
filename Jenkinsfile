@@ -56,8 +56,8 @@ agent any
       steps {
 		sh '''
 		cd ${SERVER_NAME}_Dir
-		/usr/local/bin/terraform plan -input=false -out=tfplan --var-file ${SERVER_NAME}.tfvars
-		/usr/local/bin/terraform show -no-color tfplan > tfplan.txt
+		/usr/bin/terraform plan -input=false -out=tfplan --var-file ${SERVER_NAME}.tfvars
+		/usr/bin/terraform show -no-color tfplan > tfplan.txt
 		'''
       }
     }
@@ -85,7 +85,7 @@ agent any
         input 'Apply Plan'
 		sh '''
 		cd ${SERVER_NAME}_Dir
-		/usr/local/bin/terraform apply -input=false tfplan
+		/usr/bin/terraform apply -input=false tfplan
 		'''
       }
     }
@@ -98,7 +98,7 @@ agent any
         input 'Destroy Plan'
 		sh '''
 		cd ${SERVER_NAME}_Dir
-        /usr/local/bin/terraform destroy -auto-approve --var-file ${SERVER_NAME}.tfvars
+        /usr/bin/terraform destroy -auto-approve --var-file ${SERVER_NAME}.tfvars
 		'''
       }
     }
