@@ -40,9 +40,9 @@ agent any
 		sh '''
 		cd ${SERVER_NAME}_Dir
 
-		terraform init -input=true -reconfigure -backend-config "key=global/ec2/${SERVER_NAME}.tfstate"
-                /usr/local/bin workspace new ${TF_WORKSPACEN} || true
-		/usr/local/bin workspace list
+		terraform init 
+                /usr/local/bin/terraform workspace new ${TF_WORKSPACEN} || true
+		/usr/local/bin/terraform workspace list
 		'''
                 echo 'Workspace creation successful!!'
       }
