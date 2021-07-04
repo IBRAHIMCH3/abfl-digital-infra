@@ -22,8 +22,8 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv ec2/* ${SERVER_NAME}_Dir
-        mv variables/.terraform.lock.hcl variables/*.tf variables/${SERVER_NAME}.tfvars ${SERVER_NAME}_Dir
+        mv main/* ${SERVER_NAME}_Dir
+        mv variables/ variables/*.tf variables/${SERVER_NAME}.tfvars ${SERVER_NAME}_Dir
         ls -lart ${SERVER_NAME}_Dir
         '''
      }
