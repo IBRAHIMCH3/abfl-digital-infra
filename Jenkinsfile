@@ -1,5 +1,5 @@
 def ENVIRONMENTS = [
-	'DEV (mumbai)': [env: 'abfl-digital-dev', abfl_region: 'mumbai', aws_region: 'eu-west-1']
+	'DEV (mumbai)': [env: 'abfl-digital-dev', abfl_region: 'mumbai', aws_region: 'ap-south-1']
 	]
 pipeline {
 agent any
