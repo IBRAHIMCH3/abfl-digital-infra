@@ -1,5 +1,5 @@
 # Environmental variables
-#variable "aws_region" {} 
+variable "aws_region" {} 
 #variable "aws_account" {}
 #variable "aws_role" {}
 variable "env_name" {}  
