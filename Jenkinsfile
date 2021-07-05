@@ -6,7 +6,7 @@ agent any
     TF_IN_AUTOMATION = 'true'
     TF_LOG = 'TRACE'
     TF_LOG_PATH = '/tmp/TF.log'
-    SERVER_NAME = "${params.servername}"
+    ABFL-Digital-SERVER_NAME = "${params.servername}"
 
   }
   stages {
@@ -20,16 +20,16 @@ agent any
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'variables']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
         ls -la variables
-        if [ ! -d ${SERVER_NAME}_Dir ]; then
+        if [ ! -d ${ABFL-Digital-SERVER_NAME}_Dir ]; then
             echo "Folder doesnt exist. Creating folder!"
-            mkdir ${SERVER_NAME}_Dir
+            mkdir ${ABFL-Digital-SERVER_NAME}_Dir
 		else
 			echo "Folder exists !!"
         fi
-        mv main/* ${SERVER_NAME}_Dir
-        mv variables/.terraform.lock.hcl variables/*.tf variables/config/mumbai/${SERVER_NAME}.tfvars ${SERVER_NAME}_Dir
-	mv config/mumbai ${SERVER_NAME}_Dir
-        ls -lart ${SERVER_NAME}_Dir
+        mv main/* ${ABFL-Digital-SERVER_NAME}_Dir
+        mv variables/.terraform.lock.hcl variables/*.tf variables/config/mumbai/${ABFL-Digital-SERVER_NAME}.tfvars ${ABFL-Digital-SERVER_NAME}_Dir
+	mv config/mumbai ${ABFL-Digital-SERVER_NAME}_Dir
+        ls -lart ${ABFL-Digital-SERVER_NAME}_Dir
         '''
      }
     }
@@ -39,9 +39,9 @@ agent any
       steps {
                 echo 'Initiating workspace creation!!'
 		sh '''
-		cd ${SERVER_NAME}_Dir
+		cd ${ABFL-Digital-SERVER_NAME}_Dir
 
-		terraform init -input=true -reconfigure -backend-config "key=global/ec2/${SERVER_NAME}.tfstate"
+		terraform init -input=true -reconfigure -backend-config "key=global/ec2/${ABFL-Digital-SERVER_NAME}.tfstate"
                 /usr/bin/terraform workspace new ${TF_WORKSPACEN} || true
 		/usr/bin/terraform workspace list
 		'''
@@ -56,8 +56,8 @@ agent any
        }
       steps {
 		sh '''
-		cd ${SERVER_NAME}_Dir
-		/usr/bin/terraform plan -input=false -out=tfplan --var-file ${SERVER_NAME}.tfvars
+		cd ${ABFL-Digital-SERVER_NAME}_Dir
+		/usr/bin/terraform plan -input=false -out=tfplan --var-file ${ABFL-Digital-SERVER_NAME}.tfvars
 		/usr/bin/terraform show -no-color tfplan > tfplan.txt
 		'''
       }
@@ -71,8 +71,8 @@ agent any
 
             steps {
                 script {
-                   sh "cd ${SERVER_NAME}_Dir"
-                    def plan = readFile "${SERVER_NAME}_Dir/tfplan.txt"
+                   sh "cd ${ABFL-Digital-SERVER_NAME}_Dir"
+                    def plan = readFile "${ABFL-Digital-SERVER_NAME}_Dir/tfplan.txt"
                     input message: "Do you want to apply the plan?",
                         parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                 }
@@ -85,7 +85,7 @@ agent any
       steps {
         input 'Apply Plan'
 		sh '''
-		cd ${SERVER_NAME}_Dir
+		cd ${ABFL-Digital-SERVER_NAME}_Dir
 		/usr/bin/terraform apply -input=false tfplan
 		'''
       }
@@ -98,8 +98,8 @@ agent any
       steps {
         input 'Destroy Plan'
 		sh '''
-		cd ${SERVER_NAME}_Dir
-        /usr/bin/terraform destroy -auto-approve --var-file ${SERVER_NAME}.tfvars
+		cd ${ABFL-Digital-SERVER_NAME}_Dir
+        /usr/bin/terraform destroy -auto-approve --var-file ${ABFL-Digital-SERVER_NAME}.tfvars
 		'''
       }
     }
@@ -107,7 +107,7 @@ agent any
   }
     post {
         always {
-            archiveArtifacts artifacts: "${SERVER_NAME}_Dir/tfplan.txt"
+            archiveArtifacts artifacts: "${ABFL-Digital-SERVER_NAME}_Dir/tfplan.txt"
         }
   }
 }
