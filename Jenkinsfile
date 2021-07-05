@@ -10,9 +10,7 @@ agent any
     TF_LOG = 'TRACE'
     TF_LOG_PATH = '/tmp/TF.log'
     ABFL_SERVER_NAME = "${params.servername}"
-    AWS_DEFAULT_REGION = "ap-south-1" 
-    roleAccount  = "${params.accout}"
-    aws_role = "${params.role}"
+    
 
   }
   stages {
