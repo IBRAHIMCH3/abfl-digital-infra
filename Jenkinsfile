@@ -2,11 +2,11 @@ pipeline {
 agent any
 
   environment {
-    TF_WORKSPACEN = "${params.servername}_WS" /// Sets the Terraform Workspace
-    TF_IN_AUTOMATION = 'true'
-    TF_LOG = 'TRACE'
-    TF_LOG_PATH = '/tmp/TF.log'
-    ABFL_SERVER_NAME = "${params.servername}"
+    ABFL_TF_WORKSPACEN 		= "${params.servername}_WS" /// Sets the Terraform Workspace
+    ABFL_TF_IN_AUTOMATION 	= 'true'
+    ABFL_TF_LOG 			= 'TRACE'
+    ABFL_TF_LOG_PATH 		= '/tmp/TF.log'
+    ABFL_SERVER_NAME 		= "${params.servername}"
     
 
   }
@@ -43,7 +43,7 @@ agent any
 		cd ${ABFL_SERVER_NAME}_Dir
 
 		terraform init -input=true -reconfigure -backend-config "key=global/ec2/${ABFL_SERVER_NAME}.tfstate"
-                /usr/bin/terraform workspace new ${TF_WORKSPACEN} || true
+                /usr/bin/terraform workspace new ${ABFL_TF_WORKSPACEN} || true
 		/usr/bin/terraform workspace list
 		'''
                 echo 'Workspace creation successful!!'
