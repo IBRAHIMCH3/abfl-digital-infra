@@ -1,6 +1,3 @@
-def ENVIRONMENTS = [
-	'DEV (mumbai)': [env: 'abfl-digital-dev', abfl_region: 'singapore', aws_region: 'ap-southeast-1']
-	]
 pipeline {
 agent any
 
