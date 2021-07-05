@@ -1,10 +1,10 @@
 # Environmental variables
 
-aws_region                      = "ap-southeast-1"
+#aws_region                      = "ap-southeast-1"
 env_name                        = "abfl-digital"
 vpc_id                          = "vpc-d80dc3be"
-aws_account 		              	= "605473850426"
-aws_role    		              	= "jenkins_Cross"
+#aws_account 		              	= "605473850426"
+#aws_role    		              	= "jenkins_Cross"
 
 
 # SSH Key related variables
