@@ -1,5 +1,7 @@
 # Environmental variables
-variable "aws_region" {} 
+#variable "aws_region" {} 
+#variable "aws_account" {}
+#variable "aws_role" {}
 variable "env_name" {}  
 variable "vpc_id" {} 
 
@@ -77,5 +79,4 @@ variable "frontend_tasks_count" {}
 # Other Access URLS
 variable "ca-portal-fqdn" {}                      
 variable "ops-portal-fqdn" {}     
-variable "aws_account" {}
-variable "aws_role" {}
+
