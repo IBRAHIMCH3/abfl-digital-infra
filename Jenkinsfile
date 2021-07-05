@@ -40,12 +40,7 @@ agent any
     stage('Terraform Init') {
 
       steps {
-	      {  
-		      withAWS(roleAccount:'605473850426', role:'jenkins_Cross')
-	      }
-	       
-	      
-                echo 'Initiating workspace creation!!'
+	        echo 'Initiating workspace creation!!'
 		sh '''
 		cd ${ABFL_SERVER_NAME}_Dir
 
