@@ -40,7 +40,11 @@ agent any
     stage('Terraform Init') {
 
       steps {
-	      withAWS(roleAccount:'605473850426', role:'jenkins_Cross')
+	      {  
+		      withAWS(roleAccount:'605473850426', role:'jenkins_Cross')
+	      }
+	       
+	      
                 echo 'Initiating workspace creation!!'
 		sh '''
 		cd ${ABFL_SERVER_NAME}_Dir
@@ -59,7 +63,6 @@ agent any
        expression { params.action == 'apply' } 
        }
       steps {
-	       withAWS(roleAccount:'605473850426', role:'jenkins_Cross')
 		sh '''
 		cd ${ABFL_SERVER_NAME}_Dir
 		/usr/bin/terraform plan -input=false -out=tfplan --var-file ${ABFL_SERVER_NAME}.tfvars
@@ -88,7 +91,6 @@ agent any
        expression { params.action == 'apply' } 
        }
       steps {
-	      withAWS(roleAccount:'605473850426', role:'jenkins_Cross')
         input 'Apply Plan'
 	      
 		sh '''
