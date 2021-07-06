@@ -28,9 +28,9 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv -f main/* ${ABFL_SERVER_NAME}_Dir
-        mv -f variables/.terraform.lock.hcl variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
-	mv -f config/mumbai/* ${ABFL_SERVER_NAME}_Dir
+        mv main/* ${ABFL_SERVER_NAME}_Dir
+        mv variables/.terraform.lock.hcl variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
+	mv config/${region} ${ABFL_SERVER_NAME}_Dir
         ls -lart ${ABFL_SERVER_NAME}_Dir
         '''
      }
