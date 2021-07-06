@@ -16,7 +16,7 @@ agent any
 	  
     stage('Check-Out') {
      steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '${ABFL_TF_SERVICES}']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: ${ABFL_TF_SERVICES}]], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
         ls -l ${ABFL_TF_SERVICES}
         '''
