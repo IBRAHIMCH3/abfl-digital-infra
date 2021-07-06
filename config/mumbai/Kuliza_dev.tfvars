@@ -4,12 +4,12 @@ aws_region                      = "ap-southeast-1"
 env_name                        = "abfl-digital"
 vpc_id                          = "vpc-d80dc3be"
 
-iam_profile 					= ""ecs-ec2-profile
-iam_role 						= "ecsInstanceRole"
-keypair 						= "NewAws"
-alb_security_groups 			= ["sg-e02a8eac"]
-alb_internal 					= "false"
-load_balancer_type 				= "application"
+iam_profile 					          = "ecs-ec2-profile"
+iam_role 						            = "ecsInstanceRole"
+keypair 						            = "NewAws"
+alb_security_groups 		       	= ["sg-e02a8eac"]
+alb_internal 				           	= "false"
+load_balancer_type 			      	= "application"
 
 # EC2 and ALB Instance related variables
 
