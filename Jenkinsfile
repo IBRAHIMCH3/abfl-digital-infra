@@ -8,7 +8,7 @@ agent any
     ABFL_TF_LOG_PATH 		= '/tmp/TF.log'
     ABFL_SERVER_NAME 		= "${params.Environment}"
     ABFL_TF_REGION 		= "${params.region}"
-    ABFL_TF_SERVICES 		= "${params.services}"
+    
     
 
   }
@@ -16,9 +16,9 @@ agent any
 	  
     stage('Check-Out') {
      steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: ${ABFL_TF_SERVICES}]], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'ami']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
-        ls -l ${ABFL_TF_SERVICES}
+        ls -l ami
         '''
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'variables']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
@@ -29,7 +29,7 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv -n ${ABFL_TF_SERVICES}/* ${ABFL_SERVER_NAME}_Dir
+        mv -n ami/* ${ABFL_SERVER_NAME}_Dir
         mv -n variables variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
 	mv -n config/${region} ${ABFL_SERVER_NAME}_Dir
         ls -lart ${ABFL_SERVER_NAME}_Dir
