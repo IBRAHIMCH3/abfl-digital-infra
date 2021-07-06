@@ -71,7 +71,7 @@ resource "aws_autoscaling_group" "ecs-as-group" {
 # Create Application Load Balancer
 resource "aws_lb" "ecs-alb" {
   name               = "${var.env_name}-alb"
-  internal           = var.alb_type
+  internal           = var.alb_internal
   load_balancer_type = var.load_balancer_type 
   security_groups    = var.ecs_lb_sg
   subnets            = var.ecs_lb_subnets
