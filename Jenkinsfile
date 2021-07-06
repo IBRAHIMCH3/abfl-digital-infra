@@ -4,10 +4,10 @@ agent any
   environment {
     ABFL_TF_WORKSPACEN 		= "${params.Environment}_WS" /// Sets the Terraform Workspace
     ABFL_TF_IN_AUTOMATION 	= 'true'
-    ABFL_TF_LOG 		    = 'TRACE'
+    ABFL_TF_LOG 		= 'TRACE'
     ABFL_TF_LOG_PATH 		= '/tmp/TF.log'
     ABFL_SERVER_NAME 		= "${params.Environment}"
-    ABFL_TF_REGION 		    = "${params.region}"
+    ABFL_TF_REGION 		= "${params.region}"
     
 
   }
