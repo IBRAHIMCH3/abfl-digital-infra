@@ -3,10 +3,8 @@ terraform {
     # S3 Bucket name
     
     bucket          = "abflibrahim"
-    key            = "global/ec2/terraform.tfstate"
+    #key            = "global/ec2/terraform.tfstate"
     region          = "ap-southeast-1"
-    #role_arn       = "arn:aws:iam::123456789123:role/AdminRole"
-    
     
     #DynamoDB table name!
     

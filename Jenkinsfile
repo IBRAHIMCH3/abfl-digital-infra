@@ -15,9 +15,9 @@ agent any
 	  
     stage('Check-Out') {
      steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'main']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'ecs']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
-        ls -l main
+        ls -l ecs
         '''
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'variables']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
@@ -28,7 +28,7 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv -n main/* ${ABFL_SERVER_NAME}_Dir
+        mv -n ecs/* ${ABFL_SERVER_NAME}_Dir
         mv -n variables/.terraform.lock.hcl variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
 	mv -n config/${region} ${ABFL_SERVER_NAME}_Dir
         ls -lart ${ABFL_SERVER_NAME}_Dir
@@ -43,7 +43,7 @@ agent any
 		sh '''
 		cd ${ABFL_SERVER_NAME}_Dir
 
-		terraform init -input=true -reconfigure -backend-config "key=global/ec2/${ABFL_SERVER_NAME}.tfstate"
+		terraform init -input=true -reconfigure -backend-config "key=global/abfl-digital-infra/${ABFL_SERVER_NAME}.tfstate"
                 /usr/bin/terraform workspace new ${ABFL_TF_WORKSPACEN} || true
 		/usr/bin/terraform workspace list
 		'''
