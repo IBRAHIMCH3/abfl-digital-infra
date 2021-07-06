@@ -9,13 +9,16 @@ provider "aws" {
 }
 
 # Create a user profile which has our ecsInstance Role
+
 resource "aws_iam_instance_profile" "ecs-ec2-profile" {
-  name = "ecs-ec2-profile"
-  role = "ecsInstanceRole"
+
+  name =  var.iam_profile
+  role =  var.iam_role
 }
 
+
 # LAUNCH CONFIGURATION & AUTOSCALING GROUP
-#==================================================#
+
 # This is an EC2 launch configurations with all the required settings and will be accompanied by an autoscaling group later
 
 data "aws_ami" "amazon-ecs-ami" {
@@ -35,17 +38,15 @@ data "aws_ami" "amazon-ecs-ami" {
   owners = ["amazon"] # Canonical
 }
 
-# name_prefix is required otherwise a new version of launch configuration will fail saying that the same LC is already avaialble
-# Refer: https://stackoverflow.com/questions/51666528/terraform-throws-error-on-modifying-individual-aws-components-where-the-depend
 
 resource "aws_launch_configuration" "ecs-launch-config" {
-  name_prefix   = "${var.env_name}-lc"
-  image_id      = data.aws_ami.amazon-ecs-ami.id
-  instance_type = var.instance_type
-  key_name       = "NewAws"
-  security_groups  = ["sg-e02a8eac"]
-  user_data     = data.template_file.cluster-init.rendered
-  iam_instance_profile = aws_iam_instance_profile.ecs-ec2-profile.id
+  name_prefix     	     = "${var.env_name}-lc"
+  image_id        	     = data.aws_ami.amazon-ecs-ami.id
+  instance_type          = var.instance_type
+  key_name               = var.keypair
+  security_groups        = var.alb_security_groups
+  user_data              = data.template_file.cluster-init.rendered
+  iam_instance_profile   = aws_iam_instance_profile.ecs-ec2-profile.id
   lifecycle {
     create_before_destroy = true
   }
@@ -70,8 +71,8 @@ resource "aws_autoscaling_group" "ecs-as-group" {
 # Create Application Load Balancer
 resource "aws_lb" "ecs-alb" {
   name               = "${var.env_name}-alb"
-  internal           = false
-  load_balancer_type = "application"
+  internal           = var.alb_type
+  load_balancer_type = var.load_balancer_type 
   security_groups    = var.ecs_lb_sg
   subnets            = var.ecs_lb_subnets
 }
