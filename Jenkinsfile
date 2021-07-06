@@ -7,6 +7,7 @@ agent any
     ABFL_TF_LOG 		= 'TRACE'
     ABFL_TF_LOG_PATH 		= '/tmp/TF.log'
     ABFL_SERVER_NAME 		= "${params.servername}"
+    ABFL_TF_REGION 		= "${params.region}"
     
 
   }
@@ -28,7 +29,7 @@ agent any
 			echo "Folder exists !!"
         fi
         mv main/* ${ABFL_SERVER_NAME}_Dir
-        mv variables/.terraform.lock.hcl variables/*.tf variables/config/mumbai/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
+        mv variables/.terraform.lock.hcl variables/*.tf variables/config/${params.region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
 	mv config/mumbai ${ABFL_SERVER_NAME}_Dir
         ls -lart ${ABFL_SERVER_NAME}_Dir
         '''
