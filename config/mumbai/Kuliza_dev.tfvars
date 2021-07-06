@@ -3,7 +3,6 @@
 aws_region                      = "ap-southeast-1"
 env_name                        = "abfl-digital"
 vpc_id                          = "vpc-d80dc3be"
-
 iam_profile 					          = "ecs-ec2-profile"
 iam_role 						            = "ecsInstanceRole"
 keypair 						            = "NewAws"
