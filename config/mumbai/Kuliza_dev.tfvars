@@ -3,8 +3,8 @@
 aws_region                      = "ap-southeast-1"
 env_name                        = "abfl-digital"
 vpc_id                          = "vpc-d80dc3be"
-iam_profile 					          = "ecs-ec2-profile"
-iam_role 						            = "ecsInstanceRole"
+iam_profile 					          = "ecs-ec2-profile1"
+iam_role 						            = "ecsInstanceRole1"
 keypair 						            = "NewAws"
 alb_security_groups 		       	= ["sg-e02a8eac"]
 alb_internal 				           	= "false"
