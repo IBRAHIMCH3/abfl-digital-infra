@@ -12,7 +12,7 @@ agent any
 
   }
   stages {
-//
+	  
     stage('Check-Out') {
      steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'main']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
@@ -28,14 +28,14 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv -f main/* ${ABFL_SERVER_NAME}_Dir
-        mv -f variables/.terraform.lock.hcl variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
-	mv -f config/mumbai ${ABFL_SERVER_NAME}_Dir
+        mv -rf main/* ${ABFL_SERVER_NAME}_Dir
+        mv -rf variables/.terraform.lock.hcl variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
+	mv -rf config/mumbai ${ABFL_SERVER_NAME}_Dir
         ls -lart ${ABFL_SERVER_NAME}_Dir
         '''
      }
     }
-//
+
     stage('Terraform Init') {
 
       steps {
