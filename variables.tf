@@ -85,3 +85,8 @@ variable "frontend_tasks_count" {}
 variable "ca-portal-fqdn" {}                      
 variable "ops-portal-fqdn" {}     
 
+
+############# AMI #########
+
+variable "instance-migration-name" {}
+variable "source_instance_id" {}
