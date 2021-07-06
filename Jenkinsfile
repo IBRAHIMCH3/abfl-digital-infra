@@ -28,9 +28,9 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv ecs/* ${ABFL_SERVER_NAME}_Dir
-        mv variables variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
-	mv  config/${region} ${ABFL_SERVER_NAME}_Dir
+        mv -n ecs/* ${ABFL_SERVER_NAME}_Dir
+        mv -n variables variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
+	mv -n config/${region} ${ABFL_SERVER_NAME}_Dir
         ls -lart ${ABFL_SERVER_NAME}_Dir
         '''
      }
