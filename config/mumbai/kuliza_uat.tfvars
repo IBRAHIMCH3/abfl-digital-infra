@@ -3,15 +3,6 @@
 aws_region                      = "ap-southeast-1"
 env_name                        = "abfl-digital"
 vpc_id                          = "vpc-d80dc3be"
-#aws_account 		              	= "605473850426"
-#aws_role    		              	= "jenkins_Cross"
-
-
-# SSH Key related variables
-#use public_key_path, if you have the public key on local. Also, comment the public_key varaible in that case.
-# key_name                        = "abfl-test"
-# public_key                      = "ssh-keygen 12343turefdfvju hnmv bcvnc,vm,cv something"
-# public_key_path                 = "~/.ssh/id_rsa.pub"
 
 # EC2 and ALB Instance related variables
 instance_type                   = "t2.micro"
