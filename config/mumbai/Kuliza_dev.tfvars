@@ -80,3 +80,6 @@ frontend_tasks_count            = 1
 ca-portal-fqdn                  = "dr-ca-portal.abfldirect.com"
 ops-portal-fqdn                 = "dr-ops-portal.abfldirect.com"
 
+
+source_instance_id = "i-0a049099ce4442a3a"
+instance-migration-name = "test"
