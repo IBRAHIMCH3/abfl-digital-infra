@@ -1,9 +1,14 @@
 # Environmental variables
 variable "aws_region" {} 
-#variable "aws_account" {}
-#variable "aws_role" {}
 variable "env_name" {}  
 variable "vpc_id" {} 
+variable "iam_profile" {}
+variable "iam_role" {}
+variable  "keypair" {}
+variable  "alb_security_groups"  {}
+variable  "alb_internal" {}
+variable  "load_balancer_type" {}
+
 
 # SSH Key related variables
 # variable "key_name" {}
