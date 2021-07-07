@@ -31,8 +31,8 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv ecs* ${ABFL_SERVER_NAME}_Dir 
-	mv variables* ${ABFL_SERVER_NAME}_Dir
+        mv -n ecs* ${ABFL_SERVER_NAME}_Dir 
+	mv -n variables* ${ABFL_SERVER_NAME}_Dir
 	ls -lart ${ABFL_SERVER_NAME}_Dir
         '''
      }
