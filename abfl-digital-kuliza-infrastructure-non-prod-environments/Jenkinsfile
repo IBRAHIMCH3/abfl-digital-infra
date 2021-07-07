@@ -16,9 +16,9 @@ agent any
 	  
     stage('Check-Out') {
      steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'ami']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'ecs']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
-        ls -l ami
+        ls -l ecs
         '''
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'variables']], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/IBRAHIMCH3/abfl-digital-infra.git']]])
         sh '''
@@ -29,7 +29,7 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv -n ami/* ${ABFL_SERVER_NAME}_Dir
+        mv -n ecs/* ${ABFL_SERVER_NAME}_Dir
         mv -n variables variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
 	mv -n config/${region} ${ABFL_SERVER_NAME}_Dir
         ls -lart ${ABFL_SERVER_NAME}_Dir
