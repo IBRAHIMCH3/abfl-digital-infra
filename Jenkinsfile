@@ -31,8 +31,9 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        mv -n ecs* ${ABFL_SERVER_NAME}_Dir 
-	mv -n variables* ${ABFL_SERVER_NAME}_Dir
+        mv -n ecs/* ${ABFL_SERVER_NAME}_Dir
+        mv -n variables variables/*.tf variables/config/${region}/${ABFL_SERVER_NAME}.tfvars ${ABFL_SERVER_NAME}_Dir
+        mv -n config/${region} ${ABFL_SERVER_NAME}_Dir
 	ls -lart ${ABFL_SERVER_NAME}_Dir
         '''
      }
@@ -61,7 +62,7 @@ agent any
       steps {
 		sh '''
 		cd ${ABFL_SERVER_NAME}_Dir
-		/usr/bin/terraform plan -input=false -out=tfplan --var-file Kuliza_dev_Dir/ecs/abfl-digital-kuliza-infrastructure-non-prod-environments/config/mumbai/${ABFL_SERVER_NAME}.tfvars
+		/usr/bin/terraform plan -input=false -out=tfplan --var-file ${ABFL_SERVER_NAME}.tfvars
 		/usr/bin/terraform show -no-color tfplan > tfplan.txt
 		'''
       }
