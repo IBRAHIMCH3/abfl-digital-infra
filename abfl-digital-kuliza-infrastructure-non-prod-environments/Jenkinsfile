@@ -29,7 +29,8 @@ agent any
 		else
 			echo "Folder exists !!"
         fi
-        
+        mv  ecs/* ${ABFL_SERVER_NAME}_Dir 
+        mv  variables variables/*.tf ${ABFL_SERVER_NAME}_Dir
         ls -lart ${ABFL_SERVER_NAME}_Dir
         '''
      }
