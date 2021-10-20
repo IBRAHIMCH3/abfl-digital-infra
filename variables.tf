@@ -1,5 +1,5 @@
 # Environmental variables
-#variable "aws_region" {} 
+variable "aws_region" {} 
 #variable "env_name" {}  
 #variable "vpc_id" {} 
 #variable "iam_profile" {}
