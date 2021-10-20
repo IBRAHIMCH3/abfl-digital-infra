@@ -1,12 +1,12 @@
 
 # Create a user profile which has our ecsInstance Role
 
-
+/*
 resource "aws_iam_instance_profile" "ecs-ec2-profile" {
   name =  var.iam_profile
   role =  var.iam_role
 }
-
+*/
 
 
 # LAUNCH CONFIGURATION & AUTOSCALING GROUP
