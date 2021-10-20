@@ -1,24 +1,24 @@
 # Environmental variables
 
 aws_region                      = "ap-southeast-1"
-env_name                        = "abfl-digital"
-vpc_id                          = "vpc-d80dc3be"
-iam_profile 					          = "ecs-ec2-profile2"
-iam_role 						            = "ecsInstanceRole"
-keypair 						            = "NewAws"
-alb_security_groups 		       	= ["sg-e02a8eac"]
-alb_internal 				           	= "false"
-load_balancer_type 			      	= "application"
+#env_name                        = "abfl-digital"
+#vpc_id                          = "vpc-d80dc3be"
+#iam_profile 					          = "ecs-ec2-profile2"
+#iam_role 						            = "ecsInstanceRole"
+#keypair 						            = "NewAws"
+#alb_security_groups 		       	= ["sg-e02a8eac"]
+#alb_internal 				           	= "false"
+#load_balancer_type 			      	= "application"
 
 # EC2 and ALB Instance related variables
 
-instance_type                   = "t2.micro"
-min_instance_count              = 1
-max_instance_count              = 2
-ecs_ec2_sg                      = ["sg-e02a8eac"]
-ecs_asg_subnets                 = ["subnet-d32d8e9b"]
-ecs_lb_sg                       = ["sg-e02a8eac"]
-ecs_lb_subnets                  = ["subnet-d32d8e9b", "subnet-5bc6a802"]
+#instance_type                   = "t2.micro"
+#min_instance_count              = 1
+#max_instance_count              = 2
+#ecs_ec2_sg                      = ["sg-e02a8eac"]
+#ecs_asg_subnets                 = ["subnet-d32d8e9b"]
+#ecs_lb_sg                       = ["sg-e02a8eac"]
+#ecs_lb_subnets                  = ["subnet-d32d8e9b", "subnet-5bc6a802"]
 #listener_ssl_policy             = "ELBSecurityPolicy-TLS-1-2-2017-01"
 #listener_certificate_arn        = "arn:aws:acm:ap-southeast-1:605473850426:certificate/7bca7704-b84f-4f0f-b9c9-f4cd6928da09"
 # ECS Cluster
