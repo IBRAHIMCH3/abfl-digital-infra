@@ -13,7 +13,7 @@ resource "aws_iam_instance_profile" "ecs-ec2-profile" {
 
 # This is an EC2 launch configurations with all the required settings and will be accompanied by an autoscaling group later
 
-
+/*
 data "aws_ami" "amazon-ecs-ami" {
   most_recent = true
   filter {
@@ -46,7 +46,7 @@ resource "aws_launch_configuration" "ecs-launch-config" {
 }
 
 # This autoscaling group will take the above launch configuration and spin up/down the servers
-/*
+
 resource "aws_autoscaling_group" "ecs-as-group" {
   name                 = "${var.env_name}-asg"
   launch_configuration = aws_launch_configuration.ecs-launch-config.name
