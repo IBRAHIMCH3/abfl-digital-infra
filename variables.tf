@@ -1,13 +1,13 @@
 # Environmental variables
-variable "aws_region" {} 
-variable "env_name" {}  
-variable "vpc_id" {} 
-variable "iam_profile" {}
-variable "iam_role" {}
-variable  "keypair" {}
-variable  "alb_security_groups"  {}
-variable  "alb_internal" {}
-variable  "load_balancer_type" {}
+#variable "aws_region" {} 
+#variable "env_name" {}  
+#variable "vpc_id" {} 
+#variable "iam_profile" {}
+#variable "iam_role" {}
+#variable  "keypair" {}
+#variable  "alb_security_groups"  {}
+#variable  "alb_internal" {}
+#variable  "load_balancer_type" {}
 
 
 # SSH Key related variables
@@ -16,13 +16,13 @@ variable  "load_balancer_type" {}
 # variable "public_key_path" {} 
 
 # EC2 and ALB Instance related variables
-variable "instance_type" {}
-variable "min_instance_count" {}
-variable "max_instance_count" {}
-variable "ecs_ec2_sg" { type = list(string)}
-variable "ecs_asg_subnets" { type = list(string)}
-variable "ecs_lb_sg" { type = list(string)}
-variable "ecs_lb_subnets" { type = list(string)}
+#variable "instance_type" {}
+#variable "min_instance_count" {}
+#variable "max_instance_count" {}
+#variable "ecs_ec2_sg" { type = list(string)}
+#variable "ecs_asg_subnets" { type = list(string)}
+#variable "ecs_lb_sg" { type = list(string)}
+#variable "ecs_lb_subnets" { type = list(string)}
 #variable "listener_ssl_policy" {}        
 #variable "listener_certificate_arn" {}   
 
@@ -88,5 +88,5 @@ variable "ops-portal-fqdn" {}
 
 ############# AMI #########
 
-variable "instance-migration-name" {}
-variable "source_instance_id" {}
+#variable "instance-migration-name" {}
+#variable "source_instance_id" {}
